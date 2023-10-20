@@ -1,0 +1,92 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        background-image: linear-gradient(to top, lightblue 30%, white 60%);
+        /* height: 700px; */
+        width: 100%;
+    }
+
+    .p {
+        border: 2px solid blue;
+        height: 490px;
+        width: 30%;
+        position: relative;
+        left: 430px;
+        top: 0px;
+        background-image: radial-gradient(rgb(47, 100, 216), rgb(248, 236, 236));
+        /* padding: 50px; */
+    }
+    h1 {
+        position: relative;
+        left: 490px;
+        top: 0px;
+        width: 30%;
+    }
+    #o {
+        margin-left: 70px;
+        margin-top: 10px;
+    }
+    .an{
+        /* border: 2px solid red; */
+        margin-left: 26px;
+    }
+</style>
+
+<body>
+    <h1>Wheather Details</h1>
+    <div class="p">
+        <div class="an">
+            <input type="text" name="" id="o" placeholder="Search Area">
+            <button id="ni"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-search" viewBox="0 0 16 16">
+                    <path
+                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                                        </svg></button>
+                                    <br><br><br><br><br>
+                                    Tempereture: <input type="text" name="" id="a" readonly><br><br><br><br><br>
+                                    Wind: <input type="text" name="" id="b" readonly><br><br><br><br><br>
+                                    Description: <input type="text" name="" id="c" readonly>
+                                </div>
+                            </div>
+                            <script>
+                                let idea = document.getElementById('ni').addEventListener("click", () => {
+                        
+                                    let magic = document.getElementById('o').value
+                                    let nishi = document.getElementById('a')
+                                    let idea = document.getElementById('b')
+                                    let dam = document.getElementById('c')
+                                    let a =` https://goweather.herokuapp.com/weather/${magic}`
+                                    let b = fetch(a)
+                                    b.then((w) => {
+                                        if (!w.ok) {
+                                            throw new console.error('no display');
+                                        } else {
+                                            return w.json()
+                                        }
+                                    })
+                                        .then((x) => {
+                                            nishi.value = (x.temperature)
+                                            idea.value = (x.wind)
+                                            dam.value = (x.description)
+                        
+                                        })
+                                        .catch((y) => {
+                                            console.log('erroe re maghia', y)
+                                        })
+                        
+                        
+                                })
+                                setTimeout(idea, 1000)
+                        
+                            </script>
+                        </body>
+                        
+                        </html>
+                        
